@@ -1,0 +1,7 @@
+.piebox {
+    width: 300px;
+    margin: 0 auto;
+}
+.piebox canvas {
+    width: 100%;
+}

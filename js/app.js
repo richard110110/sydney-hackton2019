@@ -67,13 +67,13 @@ var youthAtRiskName = document.querySelector("#youthAtRiskName");
 var youthAtRiskCharity = document.querySelector("#youthAtRiskCharity");
 
 fetch(url).then(function (res) {
-    return res.json();
-})
+        return res.json();
+    })
     .then(function (data) {
         console.log(data.causes.underPrivilagedYouth.causeName);
         updatePortfolio(data);
         updateModal(data);
-        
+
     });
 
 function updateModal(data) {
@@ -146,72 +146,455 @@ function updatePortfolio(data) {
 
 }
 
-
-
-
-
-function displayChart(){
-    var enteredValue = document.getElementById("enter").value;
+function displayChart() {
+    var enteredValue = document
+        .getElementById("enter")
+        .value;
     console.log(document.getElementById("enter").value);
 
     fetch(url).then(function (res) {
-        return res.json();
-    })
+            return res.json();
+        })
         .then(function (data) {
             console.log(data.causes.underPrivilagedYouth.causeName);
-            
-            
-       
 
-    new Chart(document.getElementById("bar-chart-grouped"), {
-        type: 'bar',
-        data: {
-          labels: [ data.causes.underPrivilagedYouth.causeName,  data.causes.childSlavery.causeName, data.causes.mentalHealth.causeName, 
-            data.causes.womanDomesticViolence.causeName, data.causes.globalPoverty.causeName, data.causes.socialEnterprise.causeName, data.causes.youthAtRisk.causeName],
-          datasets: [
-            {
-              label: "Achieve1",
-              backgroundColor: "red",
-              data: [(Math.floor(enteredValue*(data.causes.underPrivilagedYouth.thousandAchieves.achieve1.achieveAmount / 1000))),
-                (Math.floor(enteredValue*(data.causes.childSlavery.thousandAchieves.achieve1.achieveAmount / 1000))),
-                (Math.floor(enteredValue*(data.causes.mentalHealth.thousandAchieves.achieve1.achieveAmount / 1000))),
-                (Math.floor(enteredValue*(data.causes.womanDomesticViolence.thousandAchieves.achieve1.achieveAmount / 1000))),
-                (Math.floor(enteredValue*(data.causes.globalPoverty.thousandAchieves.achieve1.achieveAmount / 1000))),
-                (Math.floor(enteredValue*(data.causes.socialEnterprise.thousandAchieves.achieve1.achieveAmount / 1000))),
-                (Math.floor(enteredValue*(data.causes.youthAtRisk.thousandAchieves.achieve1.achieveAmount / 1000))) ]
-            }, {
-              label: "Achieve2",
-              backgroundColor: "pink",
-              data: [(Math.floor(enteredValue*(data.causes.underPrivilagedYouth.thousandAchieves.achieve2.achieveAmount / 1000))),
-                (Math.floor(enteredValue*(data.causes.childSlavery.thousandAchieves.achieve2.achieveAmount / 1000))),
-                (Math.floor(enteredValue*(data.causes.mentalHealth.thousandAchieves.achieve2.achieveAmount / 1000))),
-                (Math.floor(enteredValue*(data.causes.womanDomesticViolence.thousandAchieves.achieve2.achieveAmount / 1000))),
-                (Math.floor(enteredValue*(data.causes.globalPoverty.thousandAchieves.achieve2.achieveAmount / 1000))),
-                (Math.floor(enteredValue*(data.causes.socialEnterprise.thousandAchieves.achieve2.achieveAmount / 1000))),
-                (Math.floor(enteredValue*(data.causes.youthAtRisk.thousandAchieves.achieve2.achieveAmount / 1000)))]
-            },
-            {
-              label: "Achieve3",
-              backgroundColor: "lightblue",
-              data: [(Math.floor(enteredValue*(data.causes.underPrivilagedYouth.thousandAchieves.achieve1.achieveAmount / 1000))),
-                (Math.floor(enteredValue*(data.causes.childSlavery.thousandAchieves.achieve3.achieveAmount / 1000))),
-                (Math.floor(enteredValue*(data.causes.mentalHealth.thousandAchieves.achieve3.achieveAmount / 1000))),
-                (Math.floor(enteredValue*(data.causes.womanDomesticViolence.thousandAchieves.achieve3.achieveAmount / 1000))),
-                (Math.floor(enteredValue*(data.causes.globalPoverty.thousandAchieves.achieve3.achieveAmount / 1000))),
-                (Math.floor(enteredValue*(data.causes.socialEnterprise.thousandAchieves.achieve3.achieveAmount / 1000))),
-                (Math.floor(enteredValue*(data.causes.youthAtRisk.thousandAchieves.achieve3.achieveAmount / 1000)))]
-            },
-          ]
-        },
-        options: {
-          title: {
-            display: true,
-            text: 'Your donation result'
-          }
-        }
-    });
+            new Chart(document.getElementById("bar-chart-grouped"), {
+                type: 'bar',
+                data: {
+                    labels: [
+                        data.causes.underPrivilagedYouth.causeName,
+                        data.causes.childSlavery.causeName,
+                        data.causes.mentalHealth.causeName,
+                        data.causes.womanDomesticViolence.causeName,
+                        data.causes.globalPoverty.causeName,
+                        data.causes.socialEnterprise.causeName,
+                        data.causes.youthAtRisk.causeName
+                    ],
+                    datasets: [{
+                        label: "Achieve1",
+                        backgroundColor: "red",
+                        data: [
+                            (Math.floor(enteredValue * (data.causes.underPrivilagedYouth.thousandAchieves.achieve1.achieveAmount / 1000))),
+                            (Math.floor(enteredValue * (data.causes.childSlavery.thousandAchieves.achieve1.achieveAmount / 1000))),
+                            (Math.floor(enteredValue * (data.causes.mentalHealth.thousandAchieves.achieve1.achieveAmount / 1000))),
+                            (Math.floor(enteredValue * (data.causes.womanDomesticViolence.thousandAchieves.achieve1.achieveAmount / 1000))),
+                            (Math.floor(enteredValue * (data.causes.globalPoverty.thousandAchieves.achieve1.achieveAmount / 1000))),
+                            (Math.floor(enteredValue * (data.causes.socialEnterprise.thousandAchieves.achieve1.achieveAmount / 1000))),
+                            (Math.floor(enteredValue * (data.causes.youthAtRisk.thousandAchieves.achieve1.achieveAmount / 1000)))
+                        ]
+                    }, {
+                        label: "Achieve2",
+                        backgroundColor: "pink",
+                        data: [
+                            (Math.floor(enteredValue * (data.causes.underPrivilagedYouth.thousandAchieves.achieve2.achieveAmount / 1000))),
+                            (Math.floor(enteredValue * (data.causes.childSlavery.thousandAchieves.achieve2.achieveAmount / 1000))),
+                            (Math.floor(enteredValue * (data.causes.mentalHealth.thousandAchieves.achieve2.achieveAmount / 1000))),
+                            (Math.floor(enteredValue * (data.causes.womanDomesticViolence.thousandAchieves.achieve2.achieveAmount / 1000))),
+                            (Math.floor(enteredValue * (data.causes.globalPoverty.thousandAchieves.achieve2.achieveAmount / 1000))),
+                            (Math.floor(enteredValue * (data.causes.socialEnterprise.thousandAchieves.achieve2.achieveAmount / 1000))),
+                            (Math.floor(enteredValue * (data.causes.youthAtRisk.thousandAchieves.achieve2.achieveAmount / 1000)))
+                        ]
+                    }, {
+                        label: "Achieve3",
+                        backgroundColor: "lightblue",
+                        data: [
+                            (Math.floor(enteredValue * (data.causes.underPrivilagedYouth.thousandAchieves.achieve1.achieveAmount / 1000))),
+                            (Math.floor(enteredValue * (data.causes.childSlavery.thousandAchieves.achieve3.achieveAmount / 1000))),
+                            (Math.floor(enteredValue * (data.causes.mentalHealth.thousandAchieves.achieve3.achieveAmount / 1000))),
+                            (Math.floor(enteredValue * (data.causes.womanDomesticViolence.thousandAchieves.achieve3.achieveAmount / 1000))),
+                            (Math.floor(enteredValue * (data.causes.globalPoverty.thousandAchieves.achieve3.achieveAmount / 1000))),
+                            (Math.floor(enteredValue * (data.causes.socialEnterprise.thousandAchieves.achieve3.achieveAmount / 1000))),
+                            (Math.floor(enteredValue * (data.causes.youthAtRisk.thousandAchieves.achieve3.achieveAmount / 1000)))
+                        ]
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Your donation result'
+                    }
+                }
+            });
 
-});
+        });
+
+}
+
+function displayEachCauseChart() {
+    var enteredValue = document
+        .getElementById("enter")
+        .value;
+    console.log(document.getElementById("enter").value);
+
+    var piechart = document.getElementById("piechart");
+    fetch(url).then(function (res) {
+        return res.json();
+    }).then(function (data) {
+        var piechart_data = {
+            labels: [
+                data.causes.underPrivilagedYouth.thousandAchieves.achieve1.achieveName,
+                data.causes.underPrivilagedYouth.thousandAchieves.achieve2.achieveName,
+                data.causes.underPrivilagedYouth.thousandAchieves.achieve3.achieveName
+
+            ],
+            datasets: [{
+                data: [(Math.floor(enteredValue * (data.causes.underPrivilagedYouth.thousandAchieves.achieve1.achieveAmount / 1000))), (Math.floor(enteredValue * (data.causes.underPrivilagedYouth.thousandAchieves.achieve2.achieveAmount / 1000))),  (Math.floor(enteredValue * (data.causes.underPrivilagedYouth.thousandAchieves.achieve3.achieveAmount / 1000))) ],
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ]
+            }]
+        };
+        var myPieChart = new Chart(piechart, {
+            type: 'pie',
+            data: piechart_data
+        });
+
+    })
+
+
+
+
+
+
+
+
+}
+
+
+function displayEachCauseChart2() {
+    var enteredValue = document
+        .getElementById("enter")
+        .value;
+    console.log(document.getElementById("enter").value);
+
+    var piechart = document.getElementById("piechart2");
+    fetch(url).then(function (res) {
+        return res.json();
+    }).then(function (data) {
+        var piechart_data = {
+            labels: [
+                data.causes.refugeesInAustralia.thousandAchieves.achieve1.achieveName,
+                data.causes.refugeesInAustralia.thousandAchieves.achieve2.achieveName,
+                data.causes.refugeesInAustralia.thousandAchieves.achieve3.achieveName
+
+            ],
+            datasets: [{
+                data: [(Math.floor(enteredValue * (data.causes.refugeesInAustralia.thousandAchieves.achieve1.achieveAmount / 1000))), (Math.floor(enteredValue * (data.causes.refugeesInAustralia.thousandAchieves.achieve2.achieveAmount / 1000))),  (Math.floor(enteredValue * (data.causes.refugeesInAustralia.thousandAchieves.achieve3.achieveAmount / 1000))) ],
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ]
+            }]
+        };
+        var myPieChart = new Chart(piechart, {
+            type: 'pie',
+            data: piechart_data
+        });
+
+    })
+
+
+
+
+
+
+
+
+}
+
+
+function displayEachCauseChart3() {
+    var enteredValue = document
+        .getElementById("enter")
+        .value;
+    console.log(document.getElementById("enter").value);
+
+    var piechart = document.getElementById("piechart3");
+    fetch(url).then(function (res) {
+        return res.json();
+    }).then(function (data) {
+        var piechart_data = {
+            labels: [
+                data.causes.childSlavery.thousandAchieves.achieve1.achieveName,
+                data.causes.childSlavery.thousandAchieves.achieve2.achieveName,
+                data.causes.childSlavery.thousandAchieves.achieve3.achieveName
+
+            ],
+            datasets: [{
+                data: [(Math.floor(enteredValue * (data.causes.childSlavery.thousandAchieves.achieve1.achieveAmount / 1000))), (Math.floor(enteredValue * (data.causes.childSlavery.thousandAchieves.achieve2.achieveAmount / 1000))),  (Math.floor(enteredValue * (data.causes.childSlavery.thousandAchieves.achieve3.achieveAmount / 1000))) ],
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ]
+            }]
+        };
+        var myPieChart = new Chart(piechart, {
+            type: 'pie',
+            data: piechart_data
+        });
+
+    })
+
+
+
+
+
+
+
+
+}
+
+function displayEachCauseChart4() {
+    var enteredValue = document
+        .getElementById("enter")
+        .value;
+    console.log(document.getElementById("enter").value);
+
+    var piechart = document.getElementById("piechart4");
+    fetch(url).then(function (res) {
+        return res.json();
+    }).then(function (data) {
+        var piechart_data = {
+            labels: [
+                data.causes.mentalHealth.thousandAchieves.achieve1.achieveName,
+                data.causes.mentalHealth.thousandAchieves.achieve2.achieveName,
+                data.causes.mentalHealth.thousandAchieves.achieve3.achieveName
+
+            ],
+            datasets: [{
+                data: [(Math.floor(enteredValue * (data.causes.mentalHealth.thousandAchieves.achieve1.achieveAmount / 1000))), (Math.floor(enteredValue * (data.causes.mentalHealth.thousandAchieves.achieve2.achieveAmount / 1000))),  (Math.floor(enteredValue * (data.causes.mentalHealth.thousandAchieves.achieve3.achieveAmount / 1000))) ],
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ]
+            }]
+        };
+        var myPieChart = new Chart(piechart, {
+            type: 'pie',
+            data: piechart_data
+        });
+
+    })
+
+
+
+
+
+
+
+
+}
+
+
+function displayEachCauseChart5() {
+    var enteredValue = document
+        .getElementById("enter")
+        .value;
+    console.log(document.getElementById("enter").value);
+
+    var piechart = document.getElementById("piechart5");
+    fetch(url).then(function (res) {
+        return res.json();
+    }).then(function (data) {
+        var piechart_data = {
+            labels: [
+                data.causes.womanDomesticViolence.thousandAchieves.achieve1.achieveName,
+                data.causes.womanDomesticViolence.thousandAchieves.achieve2.achieveName,
+                data.causes.womanDomesticViolence.thousandAchieves.achieve3.achieveName
+
+            ],
+            datasets: [{
+                data: [(Math.floor(enteredValue * (data.causes.womanDomesticViolence.thousandAchieves.achieve1.achieveAmount / 1000))), (Math.floor(enteredValue * (data.causes.womanDomesticViolence.thousandAchieves.achieve2.achieveAmount / 1000))),  (Math.floor(enteredValue * (data.causes.womanDomesticViolence.thousandAchieves.achieve3.achieveAmount / 1000))) ],
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ]
+            }]
+        };
+        var myPieChart = new Chart(piechart, {
+            type: 'pie',
+            data: piechart_data
+        });
+
+    })
+
+
+
+
+
+
+
+
+}
+
+function displayEachCauseChart6() {
+    var enteredValue = document
+        .getElementById("enter")
+        .value;
+    console.log(document.getElementById("enter").value);
+
+    var piechart = document.getElementById("piechart6");
+    fetch(url).then(function (res) {
+        return res.json();
+    }).then(function (data) {
+        var piechart_data = {
+            labels: [
+                data.causes.globalPoverty.thousandAchieves.achieve1.achieveName,
+                data.causes.globalPoverty.thousandAchieves.achieve2.achieveName,
+                data.causes.globalPoverty.thousandAchieves.achieve3.achieveName
+
+            ],
+            datasets: [{
+                data: [(Math.floor(enteredValue * (data.causes.globalPoverty.thousandAchieves.achieve1.achieveAmount / 1000))), (Math.floor(enteredValue * (data.causes.globalPoverty.thousandAchieves.achieve2.achieveAmount / 1000))),  (Math.floor(enteredValue * (data.causes.globalPoverty.thousandAchieves.achieve3.achieveAmount / 1000))) ],
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ]
+            }]
+        };
+        var myPieChart = new Chart(piechart, {
+            type: 'pie',
+            data: piechart_data
+        });
+
+    })
+
+
+
+
+
+
+
+
+}
+
+
+function displayEachCauseChart7() {
+    var enteredValue = document
+        .getElementById("enter")
+        .value;
+    console.log(document.getElementById("enter").value);
+
+    var piechart = document.getElementById("piechart7");
+    fetch(url).then(function (res) {
+        return res.json();
+    }).then(function (data) {
+        var piechart_data = {
+            labels: [
+                data.causes.socialEnterprise.thousandAchieves.achieve1.achieveName,
+                data.causes.socialEnterprise.thousandAchieves.achieve2.achieveName,
+                data.causes.socialEnterprise.thousandAchieves.achieve3.achieveName
+
+            ],
+            datasets: [{
+                data: [(Math.floor(enteredValue * (data.causes.socialEnterprise.thousandAchieves.achieve1.achieveAmount / 1000))), (Math.floor(enteredValue * (data.causes.socialEnterprise.thousandAchieves.achieve2.achieveAmount / 1000))),  (Math.floor(enteredValue * (data.causes.socialEnterprise.thousandAchieves.achieve3.achieveAmount / 1000))) ],
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ]
+            }]
+        };
+        var myPieChart = new Chart(piechart, {
+            type: 'pie',
+            data: piechart_data
+        });
+
+    })
+
+
+
+
+
+
+
+
+}
+
+function displayEachCauseChart8() {
+    var enteredValue = document
+        .getElementById("enter")
+        .value;
+    console.log(document.getElementById("enter").value);
+
+    var piechart = document.getElementById("piechart8");
+    fetch(url).then(function (res) {
+        return res.json();
+    }).then(function (data) {
+        var piechart_data = {
+            labels: [
+                data.causes.youthAtRisk.thousandAchieves.achieve1.achieveName,
+                data.causes.youthAtRisk.thousandAchieves.achieve2.achieveName,
+                data.causes.youthAtRisk.thousandAchieves.achieve3.achieveName
+
+            ],
+            datasets: [{
+                data: [(Math.floor(enteredValue * (data.causes.youthAtRisk.thousandAchieves.achieve1.achieveAmount / 1000))), (Math.floor(enteredValue * (data.causes.youthAtRisk.thousandAchieves.achieve2.achieveAmount / 1000))),  (Math.floor(enteredValue * (data.causes.youthAtRisk.thousandAchieves.achieve3.achieveAmount / 1000))) ],
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ]
+            }]
+        };
+        var myPieChart = new Chart(piechart, {
+            type: 'pie',
+            data: piechart_data
+        });
+
+    })
+
+
+
+
+
 
 
 
@@ -221,8 +604,6 @@ function getDonation() {
         .getElementById("enter")
         .value;
 
-
-
     if (value < 1000 && value > 0) {
         alertify.warning('our minimum is $1000');
         preventDefault();
@@ -231,18 +612,15 @@ function getDonation() {
         alertify.error('do not make a joke here ');
         preventDefault();
 
-
     }
     if (value == null || value == "") {
         alertify.warning('please enter the amount you want to donate: ');
         preventDefault();
 
-
     }
     if (isNaN(value)) {
         alertify.error('please enter a number');
         preventDefault();
-
 
     }
 
@@ -358,15 +736,14 @@ function getDonation() {
         .getElementById("Advice")
         .innerText = advice;
 
-        displayChart();
-     
-        
+    displayChart();
+    displayEachCauseChart();
+    displayEachCauseChart2();
+    displayEachCauseChart3();
+    displayEachCauseChart4();
+    displayEachCauseChart5();
+    displayEachCauseChart6();
+    displayEachCauseChart7();
+    displayEachCauseChart8();
+
 }
-
-
-
-
-
-
-
-
